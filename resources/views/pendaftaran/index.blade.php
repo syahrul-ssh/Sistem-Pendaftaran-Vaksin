@@ -20,11 +20,15 @@
                                         href="{{ route('pendaftar.create', $jadwal->id) }}">
                                         <div class="col mr-2 text-center">
                                             <div class="h5 font-weight-bold text-primary text-uppercase mb-1">
+                                                <p class="mb-0 font-weight-bold text-primary">Tanggal
+                                                </p>
                                                 {{ \Carbon\Carbon::createFromFormat('Y-m-d', $jadwal->tanggal)->format('d-m-Y') }}</div>
                                                 <p class="mb-0 font-weight-bold text-gray-800">Jenis Vaksin :
                                                     {{ $jadwal->jenis_vaksin }}
                                                 </p>
-                                                <p class="mb-0 font-weight-bold text-gray-800">Mulai :
+                                                <p class="mb-0 font-weight-bold text-gray-800">Tempat : Aula Desa Cilampeni
+                                                </p>
+                                                <p class="mb-0 font-weight-bold text-gray-800">Jam :
                                                 {{ $jadwal->jam }} - Selesai
                                             </p>
                                         </div>

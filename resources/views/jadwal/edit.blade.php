@@ -25,11 +25,11 @@
                         <div class="form-group">
                             <strong>Pilih Jenis Vaksin:</strong>
                             <select class="custom-select" id="inputGroupSelect01" name="jenis_vaksin" required>
-                                <option selected value="{{ $jadwal->vaksin }}">
-                                    {{ $jadwal->vaksin }}</option>
+                                <option selected value="{{ $jadwal->jenis_vaksin }}">
+                                    {{ $jadwal->jenis_vaksin }}</option>
                                 @foreach ($vaksins as $vaksins)
-                                    <option value="{{ $vaksins->vaksin }}">
-                                        {{ $vaksins->vaksin }}</option>
+                                    <option value="{{ $vaksins->jenis_vaksin }}">
+                                        {{ $vaksins->jenis_vaksin }}</option>
                                 @endforeach
                             </select>
                         </div>
