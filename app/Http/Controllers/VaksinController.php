@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Jadwal;
 use App\Models\JenisVaksin;
+use Illuminate\Http\Request;
 
-class JadwalController extends Controller
+class VaksinController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +14,9 @@ class JadwalController extends Controller
      */
     public function index()
     {
-        //mengambil data dari tabel jadwals
-        $jadwals = Jadwal::latest()->simplePaginate(5);
-        //mengirim data ke view
-        return view('jadwal.index', compact('jadwals'))
+        $vaksins = JenisVaksin::latest()->simplePaginate(5);
+
+        return view('vaksin.index', compact('vaksins'))
                 ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -29,9 +27,7 @@ class JadwalController extends Controller
      */
     public function create()
     {
-        $vaksins = JenisVaksin::all();
-        //menampilkan halaman tambah
-        return view('jadwal.create', compact('vaksins'));
+        return view('vaksin.create');
     }
 
     /**
@@ -44,16 +40,14 @@ class JadwalController extends Controller
     {
         //membuat validasi untuk isian
         $request->validate([
-            'tanggal'=>'required',
             'jenis_vaksin'=>'required',
-            'jam'=>'required',
         ]);
 
         //insert request dari form ke database
-        Jadwal::create($request->all());
+        JenisVaksin::create($request->all());
 
         //riderict juka sukses
-        return redirect()->route('jadwal.index')->with('success', 'Jadwal berhasil ditambahkan!');
+        return redirect()->route('vaksin.index')->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**
@@ -62,7 +56,7 @@ class JadwalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Jadwal $jadwal)
+    public function show($id)
     {
         //
     }
@@ -73,10 +67,9 @@ class JadwalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Jadwal $jadwal)
+    public function edit(JenisVaksin $vaksin)
     {
-        $vaksins = JenisVaksin::all();
-        return view('jadwal.edit', compact('jadwal', 'vaksins'));
+        return view('vaksin.edit', compact('vaksin'));
     }
 
     /**
@@ -86,20 +79,18 @@ class JadwalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Jadwal $jadwal)
+    public function update(Request $request, JenisVaksin $vaksin)
     {
         //membuat validasi untuk isian
         $request->validate([
-            'tanggal'=>'required',
             'jenis_vaksin'=>'required',
-            'jam'=>'required',
         ]);
 
         //insert request dari form ke database
-        $jadwal->update($request->all());
+        $vaksin->update($request->all());
 
         //riderict juka sukses
-        return redirect()->route('jadwal.index')->with('success', 'Jadwal berhasil diupdate!');
+        return redirect()->route('vaksin.index')->with('success', 'Data berhasil diupdate!');
     }
 
     /**
@@ -108,11 +99,11 @@ class JadwalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Jadwal $jadwal)
+    public function destroy(JenisVaksin $vaksin)
     {
-        $jadwal->delete();
+        $vaksin->delete();
 
-        return redirect()->route('jadwal.index')
-                ->with('success', 'Jadwal Berhasil dihapus!');
+        return redirect()->route('vaksin.index')
+                ->with('success', 'Data Berhasil dihapus!');
     }
 }

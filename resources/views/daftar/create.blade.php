@@ -10,60 +10,85 @@
 
         <!-- Content Row -->
         <div class="row">
-            @if ($jadwals->count())
+            @if ($jadwal->count())
                 <form action="{{ route('daftar.store') }}" method="POST">
-                    @csrf
+                    {{ csrf_field() }}
 
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>Pilih Tanggal:</strong>
-                                <select class="custom-select" id="inputGroupSelect01" name="tanggal_vaksin">
-                                    @foreach ($jadwals as $jadwals)
-                                        <option selected value="{{ $jadwals->tanggal }}">
-                                            {{ $jadwals->tanggal }}</option>
-                                    @endforeach
+                                <strong>Tanggal:</strong>
+                                <select class="custom-select" id="inputGroupSelect01" name="tanggal" readonly>
+                                    <option selected value="{{ $jadwal->tanggal }}">
+                                        {{ $jadwal->tanggal }}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
+                                <strong>Jenis Vaksin</strong>
+                                <input type="text" name="jenis_vaksin" class="form-control" value="{{ $jadwal->jenis_vaksin }}"
+                                    readonly>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
                                 <strong>NIK:</strong>
-                                <input type="number" name="nik" class="form-control">
+                                <input type="number" name="nik" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Nama:</strong>
-                                <input type="text" name="nama" class="form-control">
+                                <input type="text" name="nama" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>Nomor Telepon yang bisa dihubungi:</strong>
-                                <input type="number" name="nomor_hp" class="form-control">
+                                <strong>Jenis Kelamin:</strong>
+                                <select class="custom-select" id="inputGroupSelect02" name="jenis_kelamin" required>
+                                    <option value="" selected>
+                                        Pilih Disini ...</option>
+                                    <option value="Laki-Laki">
+                                        Laki-Laki</option>
+                                    <option value="Perempuan">
+                                        Perempuan</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>Nomor Telepon yang bisa dihubungi/WA:</strong>
+                                <input type="number" name="nomor_hp" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>Email:</strong>
+                                <input type="email" name="email" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Tempat Lahir:</strong>
-                                <input type="text" name="tempat_lahir" class="form-control">
+                                <input type="text" name="tempat_lahir" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Tanggal Lahir:</strong>
-                                <input type="date" name="tanggal_lahir" class="form-control">
+                                <input type="date" name="tanggal_lahir" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Alamat:</strong>
-                                <textarea class="form-control" style="height:150px" name="alamat"
-                                    placeholder="Alamat"></textarea>
+                                <textarea class="form-control" style="height:150px" name="alamat" placeholder="Alamat"
+                                    required></textarea>
                             </div>
                         </div>
                         <input type="hidden" name="kode_unik" value="{{ random_int(100000, 999999) }}">
+                        <input type="hidden" name="jam" value="{{ $jadwal->jam }}">
                         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>

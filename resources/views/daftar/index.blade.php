@@ -22,9 +22,9 @@
                         <th scope="col">NIK</th>
                         <th scope="col">Nama</th>
                         <th scope="col">Nomor Telepon</th>
+                        <th scope="col">Email</th>
                         <th scope="col">Tempat, Tgl Lahir</th>
                         <th scope="col">Alamat</th>
-                        <th scope="col">Tanggal Vaksin</th>
                         <th scope="col">Kode Pendaftaran</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -35,9 +35,9 @@
                             <td>{{ $daftar->nik }}</td>
                             <td>{{ $daftar->nama }}</td>
                             <td>{{ $daftar->nomor_hp }}</td>
-                            <td>{{ $daftar->tempat_lahir }}, {{ $daftar->tanggal_lahir }}</td>
+                            <td>{{ $daftar->email }}</td>
+                            <td>{{ $daftar->tempat_lahir }}, {{ \Carbon\Carbon::createFromFormat('Y-m-d', $daftar->tanggal_lahir)->format('d-m-Y') }}</td>
                             <td>{{ $daftar->alamat }}</td>
-                            <td>{{ $daftar->tanggal_vaksin }}</td>
                             <td class="text-sm-center">{{ $daftar->kode_unik }}</td>
                             <td class="text-sm-center">
                                 <form action="{{ route('daftar.destroy', $daftar->id) }}" method="POST">

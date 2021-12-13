@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\VaksinController;
+use App\Http\Controllers\PendaftarController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\DaftarController;
 use App\Http\Controllers\CariController;
@@ -30,6 +32,8 @@ Auth::routes([
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('daftar', DaftarController::class);
 Route::get('/Pendaftaran/{daftar:kode_unik}', [CariController::class, 'show'])->name('pendaftaran');
+Route::get('/pendaftaran', [PendaftarController::class, 'index'])->name('pendaftar');
+Route::get('/pendaftaran/{jadwal}/create', [PendaftarController::class, 'create'])->name('pendaftar.create');
 Route::get('/cari', [CariController::class, 'search'])->name('cari');
 Route::get('/cari/kartu', [CariController::class, 'searchKartu'])->name('cari.kartu');
 Route::get('/cari/data', [CariController::class, 'find'])->name('cari_pendaftar');
@@ -40,3 +44,4 @@ Route::get('/selesai/{daftar}', [CompleteController::class, 'getData'])->name('s
 Route::get('/selesai', [CompleteController::class, 'index'])->name('selesai.index');
 Route::delete('/selesai/{selesai}', [CompleteController::class, 'destroy'])->name('selesai.destroy');
 Route::resource('jadwal', JadwalController::class);
+Route::resource('vaksin', VaksinController::class);

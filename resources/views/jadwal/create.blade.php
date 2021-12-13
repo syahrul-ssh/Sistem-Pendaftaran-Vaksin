@@ -22,6 +22,19 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
+                            <strong>Pilih Jenis Vaksin:</strong>
+                            <select class="custom-select" id="inputGroupSelect01" name="jenis_vaksin" required>
+                                <option selected value="">
+                                    Pilih Jenis Vaksin...</option>
+                                @foreach ($vaksins as $vaksins)
+                                    <option value="{{ $vaksins->jenis_vaksin }}">
+                                        {{ $vaksins->jenis_vaksin }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
                             <strong>Tanggal:</strong>
                             <input type="date" name="tanggal" class="form-control">
                         </div>

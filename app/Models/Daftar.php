@@ -11,14 +11,18 @@ class Daftar extends Model
 
 
     protected $fillable = [
-            'tanggal_vaksin',
+            'tanggal',
+            'jenis_vaksin',
             'nik',
             'nama',
+            'jenis_kelamin',
             'nomor_hp',
+            'email',
             'tempat_lahir',
             'tanggal_lahir',
             'alamat',
             'kode_unik',
+            'jam',
     ];
 
 

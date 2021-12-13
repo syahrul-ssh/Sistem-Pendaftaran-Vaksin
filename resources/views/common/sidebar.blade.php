@@ -28,6 +28,13 @@
 
     <!-- Nav Item - tabah jadwal vaksin -->
     <li class="nav-item active">
+        <a class="nav-link" href="{{ route('vaksin.index') }}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Jenis Vaksin</span></a>
+    </li>
+
+    <!-- Nav Item - tabah jadwal vaksin -->
+    <li class="nav-item active">
         <a class="nav-link" href="{{ route('jadwal.index') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Jadwal Vaksin</span></a>

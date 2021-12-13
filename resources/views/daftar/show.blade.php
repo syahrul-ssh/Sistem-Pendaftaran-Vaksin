@@ -30,6 +30,10 @@
             </div>
             <table class="table">
                 <tr>
+                    <th scope="col">Jenis Vaksin</th>
+                    <td>{{ $daftar->jenis_vaksin }}</td>
+                </tr>
+                <tr>
                     <th scope="col">NIK</th>
                     <td>{{ $daftar->nik }}</td>
                 </tr>
@@ -38,12 +42,16 @@
                     <td>{{ $daftar->nama }}</td>
                 </tr>
                 <tr>
+                    <th scope="col">Email</th>
+                    <td>{{ $daftar->email }}</td>
+                </tr>
+                <tr>
                     <th scope="col">Nomor Telepon</th>
                     <td>{{ $daftar->nomor_hp }}</td>
                 </tr>
                 <tr>
                     <th scope="col">Tempat, Tgl Lahir</th>
-                    <td>{{ $daftar->tempat_lahir }}, {{ $daftar->tanggal_lahir }}</td>
+                    <td>{{ $daftar->tempat_lahir }}, {{ \Carbon\Carbon::createFromFormat('Y-m-d', $daftar->tanggal_lahir)->format('d-m-Y') }}</td>
                 </tr>
                 <tr>
                     <th scope="col">Alamat</th>
@@ -51,10 +59,10 @@
                 </tr>
                 <tr>
                     <th scope="col">Tanggal Vaksin</th>
-                    <td>{{ $daftar->tanggal_vaksin }}</td>
+                    <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $daftar->tanggal)->format('d-m-Y') }}</td>
                 </tr>
                 <tr>
-                    <th scope="col">Tempat</th>
+                    <th scope="col">Tempat Vaksin</th>
                     <td>Aula Desa Cilampeni</td>
                 </tr>
             </table>

@@ -46,7 +46,7 @@
                     <li><a class="nav-link" href="#">Home</a></li>
                     <li><a class="nav-link" href="{{ route('cari') }}">Cek Pendaftaran</a></li>
                     <li><a class="nav-link" href="{{ route('cari.kartu') }}">Cetak Kartu Vaksin</a></li>
-                    <li><a class="getstarted" href="{{ route('daftar.create') }}">Daftar Vaksin</a></li>
+                    <li><a class="getstarted" href="{{ route('pendaftar') }}">Daftar Vaksin</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -65,7 +65,7 @@
                     <h2>Dengan berpartisipasi dalam program Vaksinasi COVID-19, yang sekarang diselenggarakan di
                         Desa Cilampeni</h2>
                     <div class="d-flex justify-content-center justify-content-lg-start">
-                        <a href="{{ route('daftar.create') }}" class="btn-get-started scrollto">Daftar Vaksin
+                        <a href="{{ route('pendaftar') }}" class="btn-get-started scrollto">Daftar Vaksin
                             Sekarang!</a>
                     </div>
                 </div>

@@ -16,7 +16,7 @@ class DaftarController extends Controller
      */
     public function index()
     {
-        $daftars = Daftar::orderBy('tanggal_vaksin', 'asc')->simplePaginate(5);
+        $daftars = Daftar::orderBy('tanggal', 'asc')->simplePaginate(5);
         return view('daftar.index', compact('daftars'))
                 ->with('i', (request()->input('page', 1)-1)*5);
     }
@@ -28,9 +28,9 @@ class DaftarController extends Controller
      */
     public function create()
     {
-        $jadwals = Jadwal::all();
-        return view('daftar.create', compact('jadwals'))
-                ->with('i', (request()->input('page', 1)-1)*10);
+        // $jadwals = Jadwal::all();
+        // return view('daftar.create', compact('jadwals'))
+        //         ->with('i', (request()->input('page', 1)-1)*10);
     }
 
     /**
@@ -42,14 +42,18 @@ class DaftarController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'tanggal_vaksin'=>'required',
+            'tanggal'=>'required',
+            'jenis_vaksin'=>'required',
             'nik'=>'required',
             'nama'=>'required',
+            'jenis_kelamin'=>'required',
             'nomor_hp'=>'required',
+            'email'=>'required',
             'tempat_lahir'=>'required',
             'tanggal_lahir'=>'required',
             'alamat'=>'required',
             'kode_unik'=>'required',
+            'jam'=>'required',
         ]);
 
         $daftar = Daftar::create($request->all());
