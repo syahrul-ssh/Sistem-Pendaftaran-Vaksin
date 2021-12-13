@@ -20,6 +20,18 @@ class DaftarController extends Controller
         return view('daftar.index', compact('daftars'))
                 ->with('i', (request()->input('page', 1)-1)*5);
     }
+
+    public function indexFiltered(Request $request)
+    {
+        $keyword1 = $request->filter1;
+        $keyword2 = $request->filter2;
+        $daftars = Daftar::where('nik', 'like', "%" . $keyword1 . "%")
+                ->where('kode_unik', 'like', "%" . $keyword2 . "%")
+                ->latest()
+                ->simplePaginate(5);
+        return view('daftar.filter', compact('daftars', 'keyword1', 'keyword2'))
+                ->with('i', (request()->input('page', 1)-1)*5);
+    }
     
     /**
      * Show the form for creating a new resource.

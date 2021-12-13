@@ -31,6 +31,7 @@ Auth::routes([
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('daftar', DaftarController::class);
+Route::get('/daftar-filtered/{daftar?}', [DaftarController::class, 'indexFiltered'])->name('daftar.filter');
 Route::get('/Pendaftaran/{daftar:kode_unik}', [CariController::class, 'show'])->name('pendaftaran');
 Route::get('/pendaftaran', [PendaftarController::class, 'index'])->name('pendaftar');
 Route::get('/pendaftaran/{jadwal}/create', [PendaftarController::class, 'create'])->name('pendaftar.create');

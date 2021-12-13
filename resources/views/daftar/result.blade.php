@@ -27,7 +27,6 @@
                 <a class="btn btn-secondary" href="{{ route('cetak', $daftars->id) }}">Cetak Kartu
                     Pendaftaran</a>
             </div>
-            {{-- @foreach ($daftars as $daftar) --}}
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <h3>Nomor Pendaftaran:</h3>
@@ -37,6 +36,10 @@
             </div>
             <table class="table">
                 <tr>
+                    <th scope="col">Jenis Vaksin</th>
+                    <td>{{ $daftars->jenis_vaksin }}</td>
+                </tr>
+                <tr>
                     <th scope="col">NIK</th>
                     <td>{{ $daftars->nik }}</td>
                 </tr>
@@ -45,20 +48,28 @@
                     <td>{{ $daftars->nama }}</td>
                 </tr>
                 <tr>
+                    <th scope="col">Email</th>
+                    <td>{{ $daftars->email }}</td>
+                </tr>
+                <tr>
                     <th scope="col">Nomor Telepon</th>
                     <td>{{ $daftars->nomor_hp }}</td>
                 </tr>
                 <tr>
                     <th scope="col">Tempat, Tgl Lahir</th>
-                    <td>{{ $daftars->tempat_lahir }}, {{ $daftars->tanggal_lahir }}</td>
+                    <td>{{ $daftars->tempat_lahir }}, {{ \Carbon\Carbon::createFromFormat('Y-m-d', $daftars->tanggal_lahir)->format('d-m-Y') }}</td>
                 </tr>
                 <tr>
                     <th scope="col">Alamat</th>
                     <td>{{ $daftars->alamat }}</td>
                 </tr>
                 <tr>
-                    <th scope="col">Tempat & Tanggal Vaksin</th>
-                    <td>Aula Desa Cilampeni, {{ $daftars->tanggal_vaksin }}</td>
+                    <th scope="col">Tanggal Vaksin</th>
+                    <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $daftars->tanggal)->format('d-m-Y') }}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Tempat Vaksin</th>
+                    <td>Aula Desa Cilampeni</td>
                 </tr>
             </table>
         </div>

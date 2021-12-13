@@ -29,6 +29,7 @@
                         <input type="text" class="form-control" name="filter2" id="filter2" placeholder="kode pendaftaran">
                     </div>
                     <button type="submit" class="btn btn-primary mb-3 mr-1">Cari</button>
+                    <a href="{{ route('daftar.index') }}" class="btn btn-success mb-3">Tampilkan Semua Data</a>
                 </div>
             </form>
 

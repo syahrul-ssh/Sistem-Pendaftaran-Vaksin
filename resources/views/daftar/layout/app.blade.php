@@ -50,7 +50,6 @@
                 <ul>
                     <li><a class="nav-link" href="{{ route('landing') }}">Home</a></li>
                     <li><a class="nav-link" href="{{ route('cari') }}">Cek Pendaftaran</a></li>
-                    <li><a class="nav-link" href="{{ route('cari.kartu') }}">Cetak Kartu Vaksin</a></li>
                     <li><a class="getstarted" href="{{ route('pendaftar') }}">Daftar Vaksin</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
