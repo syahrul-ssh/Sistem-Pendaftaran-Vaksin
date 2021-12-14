@@ -44,5 +44,6 @@ Route::get('/kartu-vaksin/{selesai}', [CetakKartuController::class, 'cetakKartuV
 Route::get('/selesai/{daftar}', [CompleteController::class, 'getData'])->name('selesai');
 Route::get('/selesai', [CompleteController::class, 'index'])->name('selesai.index');
 Route::delete('/selesai/{selesai}', [CompleteController::class, 'destroy'])->name('selesai.destroy');
+Route::get('/selesai-filtered/{selesai?}', [CompleteController::class, 'indexFiltered'])->name('selesai.filter');
 Route::resource('jadwal', JadwalController::class);
 Route::resource('vaksin', VaksinController::class);

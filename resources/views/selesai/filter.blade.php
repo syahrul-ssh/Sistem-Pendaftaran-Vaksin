@@ -29,6 +29,7 @@
                         <input type="text" class="form-control" name="filter2" id="filter2" placeholder="kode pendaftaran">
                     </div>
                     <button type="submit" class="btn btn-primary mb-3 mr-1">Cari</button>
+                    <a href="{{ route('selesai.index') }}" class="btn btn-success mb-3">Tampilkan Semua Data</a>
                 </div>
             </form>
 
@@ -47,17 +48,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($selesai as $s)
+                        @foreach ($selesais as $selesai)
                             <tr>
-                                <td>{{ $s->nik }}</td>
-                                <td>{{ $s->nama }}</td>
-                                <td>{{ $s->nomor_hp }}</td>
-                                <td>{{ $s->email }}</td>
-                                <td>{{ $s->tempat_lahir }}, {{ \Carbon\Carbon::createFromFormat('Y-m-d', $s->tanggal_lahir)->format('d-m-Y') }}</td>
-                                <td>{{ $s->alamat }}</td>
-                                <td class="text-sm-center">{{ $s->kode_unik }}</td>
+                                <td>{{ $selesai->nik }}</td>
+                                <td>{{ $selesai->nama }}</td>
+                                <td>{{ $selesai->nomor_hp }}</td>
+                                <td>{{ $selesai->email }}</td>
+                                <td>{{ $selesai->tempat_lahir }}, {{ \Carbon\Carbon::createFromFormat('Y-m-d', $selesai->tanggal_lahir)->format('d-m-Y') }}</td>
+                                <td>{{ $selesai->alamat }}</td>
+                                <td class="text-sm-center">{{ $selesai->kode_unik }}</td>
                                 <td class="text-sm-center">
-                                    <form action="{{ route('selesai.destroy', $s->id) }}" method="POST">
+                                    <form action="{{ route('selesai.destroy', $selesai->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm"
@@ -69,7 +70,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                {!! $selesai->links() !!}
+                {!! $selesais->links() !!}
     
             </div>
         </div>

@@ -28,6 +28,18 @@ class CompleteController extends Controller
         return view('selesai.index', compact('selesai'))
                 ->with('i', (request()->input('page', 1)-1)*5);
     }
+
+    public function indexFiltered(Request $request)
+    {
+        $keyword1 = $request->filter1;
+        $keyword2 = $request->filter2;
+        $selesais = SelesaiVaksin::where('nik', 'like', "%" . $keyword1 . "%")
+                ->where('kode_unik', 'like', "%" . $keyword2 . "%")
+                ->latest()
+                ->simplePaginate(5);
+        return view('selesai.filter', compact('selesais', 'keyword1', 'keyword2'))
+                ->with('i', (request()->input('page', 1)-1)*5);
+    }
     
     public function destroy(SelesaiVaksin $selesai)
     {
