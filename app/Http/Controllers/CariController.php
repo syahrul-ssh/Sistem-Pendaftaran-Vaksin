@@ -22,12 +22,14 @@ class CariController extends Controller
     {
         $keyword = $request->search;
         $daftars = Daftar::where('kode_unik', 'like', "%" . $keyword . "%")->first();
+        $sudah = "belum";
         if ($daftars != null) {
-            return view('daftar.result', compact('daftars'));
+            return view('daftar.result', compact('daftars', 'sudah'));
         } else if ($daftars == null) {
             $daftars = SelesaiVaksin::where('kode_unik', 'like', "%" . $keyword . "%")->first();
+            $sudah = "sudah";
             if ($daftars != null) {
-                return view('daftar.result', compact('daftars'));
+                return view('daftar.result', compact('daftars', 'sudah'));
             }
             return view('daftar.notFound');
         }

@@ -57,7 +57,8 @@
                 </tr>
                 <tr>
                     <th scope="col">Tempat, Tgl Lahir</th>
-                    <td>{{ $daftars->tempat_lahir }}, {{ \Carbon\Carbon::createFromFormat('Y-m-d', $daftars->tanggal_lahir)->format('d-m-Y') }}</td>
+                    <td>{{ $daftars->tempat_lahir }},
+                        {{ \Carbon\Carbon::createFromFormat('Y-m-d', $daftars->tanggal_lahir)->format('d-m-Y') }}</td>
                 </tr>
                 <tr>
                     <th scope="col">Alamat</th>
@@ -70,6 +71,10 @@
                 <tr>
                     <th scope="col">Tempat Vaksin</th>
                     <td>Aula Desa Cilampeni</td>
+                </tr>
+                <tr>
+                    <th scope="col">Dosis Kesatu</th>
+                    <td>{{ $sudah }}</td>
                 </tr>
             </table>
         </div>
