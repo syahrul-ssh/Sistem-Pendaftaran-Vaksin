@@ -12,7 +12,7 @@ class CetakKartuController extends Controller
     public function cetak(Daftar $daftar)
     {
         $pdf = PDF::loadview('cetak.pendaftaran_pdf', ['daftar'=>$daftar])
-                ->setPaper([0,0,600,300]);
+                ->setPaper('a4','landscape');
         return $pdf->download('cetak-pendaftaran.pdf');
     }
     public function cetakKartuVaksin(SelesaiVaksin $selesai)

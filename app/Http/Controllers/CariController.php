@@ -24,8 +24,13 @@ class CariController extends Controller
         $daftars = Daftar::where('kode_unik', 'like', "%" . $keyword . "%")->first();
         if ($daftars != null) {
             return view('daftar.result', compact('daftars'));
+        } else if ($daftars == null) {
+            $daftars = SelesaiVaksin::where('kode_unik', 'like', "%" . $keyword . "%")->first();
+            if ($daftars != null) {
+                return view('daftar.result', compact('daftars'));
+            }
+            return view('daftar.notFound');
         }
-        return view('daftar.notFound');
     }
 
     public function searchKartu()
